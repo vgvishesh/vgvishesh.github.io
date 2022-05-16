@@ -278,7 +278,7 @@ PLATFORMS
 DEPENDENCIES
   github-pages
   jekyll
-  jekyll-theme-cayman
+  minima
   webrick (~> 1.7)
 
 BUNDLED WITH
