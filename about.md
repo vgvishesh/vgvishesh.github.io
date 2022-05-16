@@ -20,11 +20,7 @@ At the core of my being I am hacker and tinker around with new technologies in m
 2. [Draw my Dance](https://youtu.be/doDdoBb_wWs)
 3. [LearnaQuest](https://youtu.be/eT1HIXpiJVE)
 4. [Feesible](https://www.youtube.com/watch?v=y16PUC82GaQ)
-5. [augmented reality sketching board](https://www.youtube.com/watch?v=aPUoyU4ZtZM)
-
-This is where I reside on 
-- [linkedIn](https://www.linkedin.com/in/guptavishesh/)
-- [github](https://github.com/vgvishesh)
+5. [Augmented Reality Sketching Board](https://www.youtube.com/watch?v=aPUoyU4ZtZM)
 
 
 
