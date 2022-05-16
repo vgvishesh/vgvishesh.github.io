@@ -3,7 +3,7 @@ layout: default
 title: About
 ---
 # vgvishesh
-I am Vishesh Gupta, a software engineer with 9 years of experience in building software systems. Below are some of the products that I have worked on:
+I am Vishesh Gupta, a heavy duty software engineer. Below are some of the products that I have worked on:
 
 1. Games *(Ubisoft)* 
     - Just Dance 2016, 2017
