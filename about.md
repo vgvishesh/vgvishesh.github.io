@@ -15,7 +15,7 @@ I hold Master's degree in Computer Science Engineering from [Jaypee Institute of
 
 My master's thesis project : [Escape Route Animation Toolkit](https://prezi.com/osiar1gkjopx/escape-route-animation-toolkit/?utm_campaign=share&utm_medium=copy)
 
-At the core of my being I am hacker and tinker around with new technologies in my free time. These are few projects that I have completed:
+At the core of my being I am a hacker and like to tinker around with new technologies in my free time. These are few projects that I have completed:
 1. [Point cloud Rendering Engine](https://www.youtube.com/watch?v=vnP9Drw8TDE)
 2. [Draw my Dance](https://youtu.be/doDdoBb_wWs)
 3. [LearnaQuest](https://youtu.be/eT1HIXpiJVE)
