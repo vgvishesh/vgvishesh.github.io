@@ -9,7 +9,7 @@ I am Vishesh Gupta, a heavy duty software engineer. Below are some of the produc
     - Just Dance 2016, 2017
     - Monoploly PC
 2. Kindle Data Delivery Pipelines *(Amazon)*
-3. Distributed Data Annotation Pipelines *([playment](https://playment.io))*
+3. Distributed Data Annotation Pipelines *([Playment](https://playment.io))*
 
 I hold Master's degree in Computer Science Engineering from [Jaypee Institute of Information Technology](https://www.jiit.ac.in/)
 
