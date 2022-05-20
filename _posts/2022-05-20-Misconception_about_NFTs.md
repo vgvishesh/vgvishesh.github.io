@@ -231,7 +231,7 @@ Wrong, you dont and this is the **classical misconception about NFTs**. Since th
 
 Since the metadata can be viewed and accessed by anyone and any other contract can point to the same metadata and thus the image links inside it, so one might ask *where is the value in owning a NFT token* . The real value of owning a NFT token lies in the ownership variables in the NFT smart contract, `_tokenOwners` and `_holderTokens`, which proves that you own a token in the BAYC NFT contract present at blockchain address: [0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d](https://etherscan.io/address/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d).
 
-It is this ownership inside the contract that will allow you to access value added service that the NFT collection owners may create for you in present/future. By proving the ownership of the token inside the BAYC NFT contract, you would be able to access the services that will be created only for BAYC token owners which nobody else would be able to access.
+It is this ownership inside the contract that will allow you to access value added services that the NFT collection owners may create for you in present/future. By proving the ownership of the token inside the BAYC NFT contract, you would be able to access the services that will be created only for BAYC token owners which nobody else would be able to access.
 
 ***So, next time you want to buy any NFT think about what services and products would you be able to access if you purchase that NFT token!***
 
