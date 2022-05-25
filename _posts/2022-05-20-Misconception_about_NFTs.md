@@ -8,7 +8,7 @@ description: NFT 101 - Under the hood of NFT ERC 721 Smart contracts and NFT own
 ![boredApe](/assets/images/ca_bayc.png){:width="30%"}
 ![cryptoPunk](/assets/images/cp.png){:width="32%"}
 
-*Disclaimer: This post may as well be titled as **NFT 101**, as this is deeply technical. If you want to skip through the code sections and cut the chase then you can directly jump to the [answer](#answer)*
+*Disclaimer: This post may as well be titled as **NFT 101**, as this is deeply technical. If you want to skip through the code sections and cut the chase then you can directly jump to the [answer](#answer). But, if you really want to understand and can deal with some code then I strongly suggest to read the entire post.*
 
 ## What is a NFT?
 NFT stands for Non-Fungible Token. The definition of word *Fungible* is 'replaceable by another identical item; mutually interchangeable'. Therefore a Non-fungible token means that a token is only one of its kind and is not interchangeable with any other token. Simply put, it is a globally unique token. Some real world examples of NFTs are Mona Lisa, a human being, a peice of land etc.
