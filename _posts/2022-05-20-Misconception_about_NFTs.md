@@ -2,11 +2,14 @@
 layout: post
 title:  "Misconception about NFTs"
 author: vishesh gupta
-description: Under the hood of NFT ERC 721 Smart contracts and NFT ownerships.
+description: NFT 101 - Under the hood of NFT ERC 721 Smart contracts and NFT ownerships.
 ---
 ![mfer](/assets/images/mfer.png){:width="30%"}
 ![boredApe](/assets/images/ca_bayc.png){:width="30%"}
 ![cryptoPunk](/assets/images/cp.png){:width="32%"}
+
+*Disclaimer: This post may as well be titled as **NFT 101**, as this is deeply technical. If you want to skip through the code sections and cut the chase then you can directly jump to the [answer](#answer)*
+
 ## What is a NFT?
 NFT stands for Non-Fungible Token. The definition of word *Fungible* is 'replaceable by another identical item; mutually interchangeable'. Therefore a Non-fungible token means that a token is only one of its kind and is not interchangeable with any other token. Simply put, it is a globally unique token. Some real world examples of NFTs are Mona Lisa, a human being, a peice of land etc.
 
@@ -224,7 +227,7 @@ This json is called the *`metadata`* of the NFT token `7681`. This metadata hold
 In this metada json the `image` field has the URI to the actual image that you bought the NFT for: [`ipfs://QmaELMvrkWZaXgvRsFDAqMnZ5UkxaLTGp6cZmz45zZRDfA`](ipfs://QmaELMvrkWZaXgvRsFDAqMnZ5UkxaLTGp6cZmz45zZRDfA). <br> 
 If you open this link then you can access the image/digital asset that you purchased. 
 
-
+## Answer... ##
 ### So what do you own?
 You might be thinking that since the metadata above is associated to the NFT token that you have bought, then you own this metadata and the links inside it. Right? <br>
 Wrong, you dont and this is the **classical misconception about NFTs**. Since this metadata is public and can be viewed by anyone having access to internet, you do not have the permission to access control over this metadata. Moreover, the URI referred by `_baseURI` can be used to set the baseURI variable in any other contract, then the token of this new contract will also point to the metadata of BAYC NFT collection. You can try doing this by creating a new contract with the BaseURI of BAYC [here](https://docs.openzeppelin.com/contracts/4.x/wizard). 
