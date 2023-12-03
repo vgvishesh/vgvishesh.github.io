@@ -2,7 +2,7 @@
 layout: post
 title:  "How to use Server-Sent Events to stream response with OpenAI Apis"
 author: vishesh gupta
-description: A 0 to 1 application in react to stream text response.
+description: A 0 to 1 application in plain JS to stream text response.
 ---
 ![OpenAi](/assets/images/OpenAI-logo.jpg)
 
