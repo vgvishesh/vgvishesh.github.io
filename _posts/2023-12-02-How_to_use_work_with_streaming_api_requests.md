@@ -4,6 +4,8 @@ title:  "How to use Server-Sent Events to stream response with OpenAI Apis"
 author: vishesh gupta
 description: A 0 to 1 application in react to stream text response.
 ---
+![OpenAi](/assets/images/OpenAI-logo.jpg)
+
 In this post we will build an AI web application with javascript using OpenAI. 
 To get the response of our questions from OpenAI we are going to use their Chat Completion [endpoint](https://platform.openai.com/docs/api-reference/chat/create), with _Stream_ set to `true`.
 
@@ -262,7 +264,7 @@ Below is the updated code of `sendApiRequest()` to stream response from the API 
 ```
 
 Here is the video of how the application works after open the `app.html` file. 
-<iframe width="420" height="315" src="https://www.youtube.com/embed/vH1ytBza7Io" frameborder="0" allowfullscreen></iframe>
+<iframe width="750" height="350" src="https://www.youtube.com/embed/vH1ytBza7Io" frameborder="0" allowfullscreen></iframe>
 
 
 Here is the link to the complete web application: [SSE_Demo_App](https://github.com/vgvishesh/Demos/tree/main/sse-OpenAI). Please feel free to copy, modify and use this code anyhow you see fit. 
