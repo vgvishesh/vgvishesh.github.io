@@ -267,6 +267,6 @@ Here is the video of how the application works after open the `app.html` file.
 <iframe width="750" height="350" src="https://www.youtube.com/embed/vH1ytBza7Io" frameborder="0" allowfullscreen></iframe>
 
 
-Here is the link to the complete web application: [SSE_Demo_App](https://github.com/vgvishesh/Demos/tree/main/sse-OpenAI). Please feel free to copy, modify and use this code anyhow you see fit. 
+Here is the link to the complete web application: [SSE_Demo_App](https://github.com/vgvishesh/Demos/tree/main/sse-openAi). Please feel free to copy, modify and use this code anyhow you see fit. 
 
 
