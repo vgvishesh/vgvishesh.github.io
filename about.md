@@ -15,7 +15,7 @@ Hello World! I am Vishesh Gupta, a software engineer, architect and entreprenuer
 
 Over the past 11 years I have developed scalable and distribured software systems and services for these organizations. 
 
-Please feel free to ask my Agent bot anything about me, or the blogs that I have written here.
+Please feel free to ask my Agent bot anything about me, my work or the blogs that I have written here.
 
 <p id='root'></p>
 <script>
