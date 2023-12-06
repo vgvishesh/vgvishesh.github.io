@@ -4,7 +4,7 @@ title: About
 description: A curious flowing entity.
 ---
 ## vgvishesh
-Hello World! I am Vishesh Gupta, a software engineer, architect and entreprenuer. Presenlty, building [Shyft](https://shyft.to/). My software development journey has been quite interesting, below are some important organizations who have shaped me:
+Hello World! I am Vishesh Gupta, a software engineer, architect and entreprenuer. My software development journey has been quite interesting, below are some important organizations who have shaped me:
 1. [Digital Jalebi](https://www.digitaljalebi.com/)
 2. IIT Delhi, [Point cloud Rendering Engine](https://www.youtube.com/watch?v=vnP9Drw8TDE)
 3. AAA title games at Ubisoft. [JD2016](https://en.wikipedia.org/wiki/Just_Dance_2016), [JD2017](https://en.wikipedia.org/wiki/Just_Dance_2017), [Monopoly Plus](https://www.ubisoft.com/en-gb/game/monopoly/monopoly)
@@ -15,7 +15,7 @@ Hello World! I am Vishesh Gupta, a software engineer, architect and entreprenuer
 
 Over the past 11 years I have developed scalable and distribured software systems and services for these organizations. 
 
-To know more about me please use my personal conversational agent:
+Please feel free to ask my Agent bot anything about me, or the blogs that I have written here.
 
 <p id='root'></p>
 <script>
