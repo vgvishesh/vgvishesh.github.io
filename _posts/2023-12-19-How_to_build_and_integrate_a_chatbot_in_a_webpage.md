@@ -156,7 +156,7 @@ Now on to last and final Step. Yay.
     </script>
     <script src="https://embeddable-chatbot.s3.ap-south-1.amazonaws.com/index_b1.js"></script>
   ```
-**Explaination:**
+**Explanation:**
   - `elementId`: The #id of any html element where you want to render the bot. If left empty, the script attempts to render the bot in the `root` element, if not present then bot will not be rendered.
   - `authKey`: The api key that you received in your emailId, in `Step-1`.
   - `contextId`: The knowledge context id that you received from the api request in `Step-2-1`.
