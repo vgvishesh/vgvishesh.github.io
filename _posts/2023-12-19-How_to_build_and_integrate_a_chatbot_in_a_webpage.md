@@ -4,9 +4,10 @@ title:  "How to build and integrate an AI chatbot in a webpage"
 author: vishesh gupta
 description: A walkthrough to create and integrate Megamind AI chatbot that answers questions from your data. 
 ---
+![Postman](/assets/images/postman.jpg)
 ## What are we building?
 
-In this post, we are going to build an AI chatbot to answer questions about *your* career's journey, using **[Megamind's Chatbot APIs](https://api.mega-mind.io/explore)**. For the purpose of this post, I am going to use my career's data to demostrate this process, but you must use your data to get questions on your career answered.
+In this post, we are going to build an AI chatbot to answer questions about *your* career's journey, using **[Megamind's Chatbot APIs](https://api.mega-mind.io/explore)** via ***Postman***. For the purpose of this post, I am going to use my career's data to demostrate this process, but you must use your data to get questions on your career answered.
 
 ## What value does CareerBot offer?
 
@@ -48,7 +49,7 @@ In the request header field `X-Api-Key` enter the  `api-key` value that you rece
 > My resume's [PDF file](https://embeddable-chatbot.s3.ap-south-1.amazonaws.com/Vishesh2023_1.pdf)
 
 - **context_id (text)**: The knowledge context ID that this data is added to. Leave this **empty or omit** the context_id parameter from the request body. This results in the creation of a new knowledge context, with the data present in the file. The newly created knowledge context's ID is returned in the response.
-
+![Request_new_knowledge_context](/assets/images/step-2.1.png)
 
 ##### Response:<br> 
 Upon a successful request, the response will include the newly created context_id in the result object. Like below:
@@ -63,6 +64,8 @@ Upon a successful request, the response will include the newly created context_i
 #### Step-2.2: Add more files to update the knowledge base with more information about you.
 I want to give more data about me so that the bot can answer questions well. <br>
 In each request only 1 file can be uploaded hence I will make 2 more requests to the same api but this time we will also send the `context_id`` returned in the last request's response in these requests.
+
+![Updating_existing_knowledge_context](/assets/images/step-2.2.png)
 
 ##### Request-1:
 - context_id (text): `77df6825-44fb-4f5a-95dc-6c101ace42cf`
