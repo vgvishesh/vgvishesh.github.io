@@ -169,7 +169,9 @@ Now on to last and final Step. Yay.
 ## Result
 Finally, we are done! Congratulations.
 
-I deployed my ***CareerBot*** by embedding the above `<script>` tags in my blog's `about` page, [here](https://vgvishesh.com/about.html).
+I deployed my ***CareerBot*** by embedding the above `<script>` tags in my blog's `about` page, here:
+<button style="background-color: orange; color: white; padding: 10px 20px; border: none; border-radius: 10px; cursor: pointer; font-weight: bold;" onclick="window.open(`https://vgvishesh.com/about.html`, '_blank')">Vishesh's Agent</button>
+
 
 On reloading the html file you should also see the bot, click and ask questions to it, and have fun interacting with your Online Avatar. 
 
