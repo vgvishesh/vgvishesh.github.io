@@ -4,7 +4,7 @@ title:  "How to build and integrate an AI chatbot in a webpage"
 author: vishesh gupta
 description: A walkthrough to create and integrate Megamind AI chatbot that answers questions from your data. 
 ---
-![Postman](/assets/images/postman.jpg)
+![Postman](/assets/images/mega_mind.jpg)
 ## What are we building?
 
 In this post, we are going to build an AI chatbot to answer questions about *your* career's journey, using **[Megamind's Chatbot APIs](https://api.mega-mind.io/explore)** via ***Postman***. For the purpose of this post, I am going to use my career's data to demostrate this process, but you must use your data to get questions on your career answered.
