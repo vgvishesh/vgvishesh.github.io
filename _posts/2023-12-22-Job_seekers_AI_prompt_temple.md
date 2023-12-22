@@ -46,10 +46,10 @@ The value of this variable can be:
 This is the the [Final Prompt Value](#final-prompt).
 
 ## Dessert
-Use the [final prompt value](#final-prompt) as the input for your AI tool like ***ChatGpt***, or etc, to instruct AI to build your resume. 
+Use the [final prompt value](#final-prompt) as the input for your AI tool like **[ChatGpt](https://chat.openai.com/)**, or etc, to instruct AI to build your resume. 
 
 #### <ins>Output</ins>
-Using the final prompt as the input to the chatGPT:
+Using the final prompt as the input to the [chatGpt](https://chat.openai.com/):
 - output resume: **[my resume](#resultant-resume)**
 - output cover letter: **[my cover letter](#resultant-cover-letter)**
 
