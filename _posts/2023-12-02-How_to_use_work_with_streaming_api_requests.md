@@ -20,7 +20,7 @@ Refer these mdn [docs](https://developer.mozilla.org/en-US/docs/Web/API/Server-s
 We are going to create a very simple html page with javascript to make api calls and handle returned responses from OpenAI. 
 
 Lets create a bare bone html page, with the below code, name it *app.html*.
-```
+```html
 <!-- embeddable.html -->
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +48,7 @@ Lets create a bare bone html page, with the below code, name it *app.html*.
 
 In the above code the script tag refers to a _script.js_ file. Now, lets write the code in this file. Below is the starting code or the boiler plate code, as famously called by programmers, for this file. 
 
-```
+```js
 // script.js
 document.addEventListener("DOMContentLoaded", function () {
   // Function to handle form submission
@@ -83,7 +83,7 @@ Things to add in _script.js_ file are:
 
 #### Making API request to the openAI server
 [Here](https://platform.openai.com/docs/api-reference/chat/create), is the official OpenAI docs for this API endpoint. So, lets update the `sendApiRequest()` function to actually make an API request. Here is the udpdate function code:
-```
+```js
 async function sendApiRequest(question) {
     // Replace 'YOUR_OPENAI_API_KEY' with your actual OpenAI API key
     var apiKey = 'YOUR_OPENAI_API_KEY';
@@ -138,7 +138,7 @@ In the above code, we are not streaming the response. It is a plain POST http re
 
 #### Making a stream API request to the openAI server
 In the code above we have to set the field in payload `Stream` to `true`, to request streamed responses from the server. This will establish a connection between the client(browser) and server(openAI server), on which the OpenAI server sends multiple response objects in [this](https://platform.openai.com/docs/api-reference/chat/streaming) format: 
-```
+```json
 data: {"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-3.5-turbo-0613", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"role":"assistant","content":""},"finish_reason":null}]}
 
 data: {"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-3.5-turbo-0613", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"content":"Hello"},"finish_reason":null}]}
@@ -160,7 +160,7 @@ Mesage like these gets sent in burst. Sometimes in a stream you can have 1 such 
 The last message that the API request receives from the server is `data: [DONE]`. This is when the stream ends, and the server has sent the entire response.
 
 Let spend some time in examining a single response data object/chunk. A single response chunk is a JSON object of format below:
-```
+```json
 const response = {
   "id": "chatcmpl-123",
   "object": "chat.completion.chunk",
@@ -184,7 +184,7 @@ To get the entire answer for the question asked, we need to concatenate all the 
 
 #### Updating the code to handle the streaming responses
 Below is the updated code of `sendApiRequest()` to stream response from the API request.
-```
+```js
 // Function to process the question and update the answer
   async function sendApiRequest(question) {
     // Replace 'YOUR_OPENAI_API_KEY' with your actual OpenAI API key

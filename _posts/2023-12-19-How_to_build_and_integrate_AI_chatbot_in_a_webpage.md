@@ -24,7 +24,7 @@ __*Lets start!*__
 # Step-1: Get your api key
 
 Use [get_api_key api](https://www.postman.com/universal-space-831246/workspace/mega-mind/request/25540964-db3a1150-b5c6-4b4f-96a8-06a5ab519ab4?action=share&creator=25540964&ctx=documentation&active-environment=25540964-685f2501-e3ff-46eb-809a-7183df42eb2d) to get your megamind api-key. You need to pass an email address where you will receive the api-key. For e.g.:
-```
+```json
 {
     "email":"abc@sample.xyz"
 }
@@ -53,7 +53,7 @@ In the request header field `X-Api-Key` enter the  `api-key` value that you rece
 
 ##### Response:<br> 
 Upon a successful request, the response will include the newly created context_id in the result object. Like below:
-```
+```json
 {
     "result": {
         "context_id": "77df6825-44fb-4f5a-95dc-6c101ace42cf"
@@ -144,7 +144,7 @@ Now on to last and final Step. Yay.
 
 # Step-3: Integrate your CareerBot in your website
 - Add the below code in the body element of your webpage's html code:
-  ```
+  ```html
     <script>
       window.__EMBEDDED_DATA__ = {
       client: {
