@@ -27,7 +27,7 @@ Please feel free to ask my Agent bot anything about me, my work or the blogs tha
       customData: {
         botName: `Vishesh's Agent`
       },
-      containerDiv: 'root',
+      elementId: 'root',
     };
   </script>
-<script src="https://embeddable-chatbot.s3.ap-south-1.amazonaws.com/index.js"></script>
+<script src="https://embeddable-chatbot.s3.ap-south-1.amazonaws.com/index_b2.js"></script>
