@@ -157,7 +157,7 @@ Now on to last and final Step. Yay.
       elementId: 'root',
     };
     </script>
-    <script src="https://embeddable-chatbot.s3.ap-south-1.amazonaws.com/index_b1.js"></script>
+    <script src="https://embeddable-chatbot.s3.ap-south-1.amazonaws.com/index_b2.js"></script>
   ```
 **Explanation:**
   - `elementId`: The #id of any html element where you want to render the bot. If left empty, the script attempts to render the bot in the `root` element, if not present then bot will not be rendered.
