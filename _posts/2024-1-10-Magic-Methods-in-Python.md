@@ -4,6 +4,7 @@ title:  "List of Magic methods in Python"
 author: vishesh gupta
 description: Python has a lot of magic methods, this post lists them all.
 ---
+![releif](/assets/images/relief.png)
 
 In Python, special methods (also known as "magic methods" or "dunder methods" for their double underscores at the beginning and end) are used to implement and customize the behavior of built-in operations. These methods allow your objects to integrate more closely with the Python language. Here is a list of commonly used special methods:
 
