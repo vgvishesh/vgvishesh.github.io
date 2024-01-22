@@ -4,7 +4,7 @@ title:  "Types of Selectors in HTML and CSS"
 author: vishesh gupta
 description: A document for different types of selectors used in Html and css
 ---
-![releif](/assets/images/mountain_creak.png)
+![mountain_creek](/assets/images/mountain_creak.png)
 
 In HTML and CSS, selectors are used to target HTML elements so that styles can be applied to them, or they can be manipulated using JavaScript. There are various types of selectors, each serving a different purpose.
 
