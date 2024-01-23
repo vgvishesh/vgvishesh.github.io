@@ -13,6 +13,9 @@ In HTML and CSS, selectors are used to target HTML elements so that styles can b
 [1]: #1-element-selector
 - **Description**: Selects all elements of a specific type.
 - **Example**:
+```html
+<p>This is a paragraph.</p>
+```
 ```css
 p {
     color: blue;
@@ -28,6 +31,9 @@ This selects all <p> elements in the document.
 [2]: #2-class-selector
 - **Description**: Selects all elements with a specific class attribute.
 - **Example**:
+```html
+<div class="alert">Alert Box</div>
+```
 ```css
 .alert {
     font-weight: bold;
@@ -43,6 +49,9 @@ This selects all elements with class="alert".
 [3]: #3-id-selector
 - **Description**: Selects a single element with a specific id attribute.
 - **Example**:
+```html
+<div id="navbar">Navigation Bar</div>
+```
 ```css
 #navbar {
     background-color: grey;
@@ -58,6 +67,9 @@ This selects the element with `id="navbar"` (though `querySelector` is more comm
 [4]: #4-attribute-selector
 - **Description**: Selects elements based on the presence or value of an attribute.
 - **Example**:
+```html
+<input type="text">
+```
 ```css
 input[type="text"] {
     background-color: yellow;
@@ -73,6 +85,9 @@ This selects all `<input>` elements with `type="text"`.
 [5]: #5-pseudo-class-selector
 - **Description**: Selects elements based on their state or relation to other elements.
 - **Example**:
+```html
+<a href="#">Link</a>
+```
 ```css
 a:hover {
     color: red;
@@ -88,6 +103,9 @@ This targets `<a>` element when it is hovered over
 [6]: #6-pseudo-element-selector
 - **Description**: Selects part of an element.
 - **Example**:
+```html
+<p>First letter styling</p>
+```
 ```css
 p::first-letter {
     font-size: 150%;
@@ -100,6 +118,9 @@ This targets the first letter of each `<p>` element.<br>
 [7]: #7-descendant-selector
 - **Description**: Selects an element that is a descendant of another specified element.
 - **Example**:
+```html
+<div><p>Paragraph inside a div</p></div>
+```
 ```css
 div p {
     margin-left: 20px;
@@ -115,6 +136,9 @@ This selects `<p>` elements that are inside a `<div>`.
 [8]: #8-child-selector
 - **Description**: Selects an element that is a direct child of another specified element.
 - **Example**:
+```html
+<ul><li>List Item</li></ul>
+```
 ```css
 ul > li {
     color: green;
@@ -130,6 +154,9 @@ This selects `<li>` elements that are direct children of `<ul>`.
 [9]: #9-adjacent-sibling-selector
 - **Description**: Selects an element that is an immediate sibling of another specified element.
 - **Example**:
+```html
+<h1>Heading</h1><p>Paragraph after heading</p>
+```
 ```css
 h1 + p {
     font-style: italic;
@@ -145,6 +172,9 @@ This selects the first `<p>` element immediately following a `<h1>`.
 [10]: #9-adjacent-sibling-selector
 - **Description**: Selects all elements that are siblings of a specified element.
 - **Example**:
+```html
+<h1>Heading</h1><p>First Paragraph</p><p>Second Paragraph</p>
+```
 ```css
 h1 ~ p {
     border: 1px solid black;
