@@ -3,6 +3,7 @@ layout: post
 title:  "Types of Selectors in HTML and CSS"
 author: vishesh gupta
 description: A document for different types of selectors used in Html and css
+published: true
 ---
 ![mountain_creek](/assets/images/mountain_creak.png)
 
