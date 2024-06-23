@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Securing frontend user's API requests to backend system"
+title:  "Safely Expose API first products to FrontEnd clients with Confidence!"
 author: vishesh gupta
-description: A simple hashing mechanism to secure the api requests originating from frontend to backend.
+description: A simple hashing mechanism to secure the api-keys from exploitation in requests originating from frontends.
 ---
 
 ## Problem
@@ -33,8 +33,200 @@ We will be using:
 3. Broswer Cookies
 4. Redis for managing users' sessions
 
-# Handshake-Mechanism
+Before we dive deep into the code, let me tell you the approach to solve this problem.
 
+The idea is that every business request on the frontend has to be handled in a session on the backend. 
+- For every business request originating on frontend we need to pass a requestId key in the header which is calculated based on the requestId key of the previous request. 
+- For the first business request, its requestId is calculated using the sessionId returned by the session creation API from backend.
+- When backend receives a business request, it performs the below check:
+  - Check if the api-key represents valid user in the database or using any authorization mechanism.
+  - On passing the above check, it checks if the received request is in order of not, by:
+    - calculates the next request's sequence Id based on the value stored in the `sessionId` for this request's client, in the Redis.
+    - if the above calculated request sequence Id matches the incoming requestId in the request then, it serves the request with a valid response, else responds with an invalid request error. 
+
+Now, lets see this process in action with the help of some code snippets to make things more clear. 
+
+#### Part-1: Client side 
+Before making the first business API call, we need to establish a session between the server and the user's browser. 
+
+##### **Create_Session request and Business request creation and response handling**
+```js
+const MACHINE_ID = 'machineId'; //Cookie name to uniquely identify the client browser
+const GLOBAL_SESSION_ID = 'globalSessionId';  //Cookie to store the session Id
+const GLOBAL_REQUEST_ID = 'globalRequestId';  //Cookie to store the request Id
+
+private async CreateSession(): Promise<string> {
+let machineId = Cookies.get(MACHINE_ID);
+if (!machineId) {
+  Logger.log('setting machine id');
+  machineId = uuidv4();
+  Cookies.set(MACHINE_ID, machineId, { expires: 365 }); //set the cookie expiry to 1 year
+  Logger.log(machineId);
+}
+
+const res = await apiService.post('/auth/create_session', {
+  machine_id: machineId,
+}, {
+  headers: {
+    'x-api-key': this.config.apiKey,  // the api-key used by your client
+  }
+});
+
+const globalSessionId = (res.data as any).session_id;
+Cookies.set(GLOBAL_SESSION_ID, globalSessionId);
+Cookies.remove(GLOBAL_REQUEST_ID);
+return globalSessionId;
+}
+
+const apiService = {
+  get: <T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> =>
+    instance.get<T>(url, config),
+  post: <T>(url: string, data: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> =>
+    instance.post<T>(url, data, config),
+  // Add other HTTP methods as needed
+};
+
+private async getGlobalAuthIds() {
+  let globalSessionId = Cookies.get(GLOBAL_SESSION_ID);
+  if (!globalSessionId) {
+    globalSessionId = await this.CreateSession();
+  }
+
+  const globalRequestId = Cookies.get(GLOBAL_REQUEST_ID);
+  const baseId = globalRequestId ?? globalSessionId;
+  const latestRequestId = SHA256(baseId).toString();
+  Logger.log(`baseId: ${baseId}`)
+  Logger.log(`latest requestId: ${latestRequestId}`);
+  return { globalSessionId, latestRequestId};
+}
+```
+In the above code snippet, the important part is function `getGlobalAuthIds()`. This function is called as shown in the below code snippet, to create the business request's header. 
+
+```js 
+var { globalSessionId, latestRequestId } = await this.getGlobalAuthIds();
+const head = {
+  'x-api-key': this.config.apiKey,
+  'x-session-id': globalSessionId,
+  'x-request-id': latestRequestId,
+  'Content-Type': 'application/json',
+};
+```
+
+If you notice closely, the `latestRequestId` that is sent in the business request's header as the `x-request-id` which the server will compare against to check if the *request is in order or not*. 
+Lets dig a little deeper into the what is happening inside the function `getGlobalAuthIds()`. Primarily, we are using `SHA256()` encryption function on:
+- SessionId, for the first business request when the `GLOBAL_REQUEST_ID` cookie is not set. 
+- Or, on the value store in `GLOBAL_REQUEST_ID` cookie for the subsequent requests. 
+
+On successful response from the server for the business request we upate/set the `GLOBAL_REQUEST_ID` cookie value with the calculated `latestRequestId` like below:
+
+```
+// on successfull server response
+Cookies.set(GLOBAL_REQUEST_ID, latestRequestId);
+```
+
+#### Part-2: Server side 
+First thing that we do on the backend is to create an API endpoint to register a valid user's session. Below is the sample code for this endpoint.
+
+##### **Create_Session API on the backend Server**
+```js
+@Post('create_session')
+async createChatSession(@Body() dto: MegamindSessionDto, @Req() request: any) {
+  Logger.logMessage('request to create session received');
+  try {
+    const sessionId = createChatSession({
+      clientId: dto.machine_id, //machine id representing the unique client browser
+      userId: request.userId, // client's userid in your backend server corresponding to the api-key sent in the request
+    });
+    return {
+      session_id: sessionId,
+    };
+  } catch (err) {
+    throw new HttpException(err.message, HttpStatus.INTERNAL_SERVER_ERROR);
+  }
+}
+
+createChatSession(dto: ChatSessionDto): string {
+  const sessionId = generateSHA256(dto.userId + dto.clientId + Date.now().toString());
+  RedisClient.client.SET(sessionId, sessionId, {
+    EX: parseInt(configuration().SESSION_TIMEOUT),
+  }); // set the sessionId key in Redis to represent the client's sessionId, with the initial value equivalent to the key
+  return sessionId;
+}
+```
+
+As you can notice, that `sessionId` is a variable which is a SHA256() of userId (represented by the your client's api-key) and clientId (the enduser's machineId, this is your client's user). This `sessionId` is sent back in the response, so that browser can send it back in the subsequent business requests, needed to authenticate the user's session.
+
+Next piece in the backend server is the the logic to authenticate the incoming business request from the user's browser. Below is the code of a sample Nest.js auth interceptor middleware to validate the incoming requests
+```js
+export class SessionAuthInterceptor implements NestInterceptor {
+  async intercept(context: ExecutionContext, next: CallHandler<any>): Promise<Observable<any>> {
+    const req = context.switchToHttp().getRequest();
+    const sessionId = req.headers[`x-session-id`];
+
+    if (!sessionId) {
+      throw new UnauthorizedException(`INVALID_SESSION`);
+    }
+
+    const serverRequestId = await RedisClient.client.GET(sessionId);
+    if (!serverRequestId) {
+      throw new UnauthorizedException(`SESSION_TIME_OUT`);
+    }
+
+    const requestId = req.headers['x-request-id'];
+    if (!requestId) {
+      throw new UnauthorizedException(`INVALID_REQUEST_ID`);
+    }
+
+    const requestSequenceId = generateSHA256(serverRequestId);
+    if (requestSequenceId !== requestId) {
+      throw new UnauthorizedException('REQUEST_OUT_OF_SESSION');
+    }
+
+    req.sessionId = sessionId;
+    req.requestId = requestId;
+
+    return next.handle();
+  }
+
+  static UpdateSessionAfterRequest(request: any) {
+    RedisClient.client.SET(request.sessionId, request.requestId, {
+      EX: parseInt(configuration().SESSION_TIMEOUT),
+    });
+  }
+}
+```
+
+In the above code, the `intercept()` is invoked automatically for every incoming request controller that is labelled with `@UseInterceptors(SessionAuthInterceptor)`. The important thing to notice in this function is code below:
+```js
+const requestSequenceId = generateSHA256(serverRequestId);
+if (requestSequenceId !== requestId) {
+  throw new UnauthorizedException('REQUEST_OUT_OF_SESSION');
+}
+```
+The variable `requestSequenceId` is generated by doing `SHA256()` of `sessionId` key's value stored in Redis, that we calculated and stored in Redis in the previous step. The Redis key name is sent in the request's header. 
+
+Now, the most important part of the puzzle, i.e. how will the `x-request-id` sent from the browser by hashing `latestRequestId` and  `requestSequenceId` obtained by hashing `serverRequestId` match?
+
+Both the broswer and server has the same starting seed for calculating their `SHA256()` hashes i.e. the `dto.userId + dto.clientId + Date.now().toString()`. For all the subsequent requests both client and server keeps hashing,  updating and storing the next request hashes. Browser stores the next current request's hash in cookies, and the server stores in Redis against the `sessionId` key. 
+
+Once validated this function sends attaches the `reqeustId` for the present request in the request and passes it to the service layer for further processing. 
+
+On successful processing of the request, the server updates the latest `requestHash` in Redis agains the `sessionId` represented by the request, by calling the function `UpdateSessionAfterRequest()` in above code snippet. This way, both browser and server always are in sync with the latest request's id hash originating from an end user's machine. 
+
+
+## How does this Solution solve the original problem?
+Now, if anyone copies the request cURL from the browser and 
+1. try to hit your server from postman, it won't work. Why?
+- simply because the outgoing request from Postman will not have the correct `x-request-id` parameter that the server is expecting.
+2. try to write a script to automate the reqeusts, it won't work. Why?
+- again simply because the script is not using the same logic to generate the request headers and ``x-request-id` parameter is the header will be wrong. 
+
+So, yes this mechanism does solve the problem. If you want to see this in action and check if it really works, you can head over to [this page](https://vgvishesh.com/about.html), and check the network tab for the chatbot's api calls.
+
+## Aditional thoughts
+Here, I have used a very simple cryptographic validation algorithm i.e. `SHA256()` to authenticate the request. You can use any encryption mechanism as long as you manage to keep the browser and the server in sync with the requestId sequences. 
+
+If you have any questions regarding this approach please feel to reach out to me on any of my handles. 
 
 
 
