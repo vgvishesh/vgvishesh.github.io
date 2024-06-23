@@ -1,9 +1,10 @@
 ---
 layout: post
-title:  "Safely Expose API first products to FrontEnd clients with Confidence!"
+title:  "Safely expose API first products to Frontend clients with Confidence"
 author: vishesh gupta
 description: A simple hashing mechanism to secure the api-keys from exploitation in requests originating from frontends.
 ---
+![Requests](/assets/images/abstract-digital-art.jpg)
 
 ## Problem
 If you have build an API first product, then you would have faced the situation where your clients are sending their api-key in the request header and you use these sent api-keys to authenticate the client requests and track their consumption. This scheme works well when your clients use such APIs in their backend services, where these api-keys are hidden from the rest of the world, until ofcourse they manage to leak them. But usually no additional measures are needed to secure the requests.
