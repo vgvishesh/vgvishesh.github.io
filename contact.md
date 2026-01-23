@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Contact | Book a Free AI Consultation Call
-description: Schedule a 30-minute clarity call to discuss how AI can help your small business. No pitch, no demos—just a conversation about your workflows and whether AI makes sense for you.
+description: Schedule a 30-minute clarity call to discuss how AI can help your business. No pitch, no demos—just a conversation about your workflows and whether AI makes sense for you.
 keywords: AI consultation, book AI call, AI consultant contact, free AI consultation, AI strategy call
 ---
 

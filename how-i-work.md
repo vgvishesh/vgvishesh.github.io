@@ -1,8 +1,8 @@
 ---
 layout: page
-title: How I Work | AI Adoption Process for Small Businesses
-description: Learn about my proven 4-step process for helping small businesses adopt AI safely. From discovery to pilot implementation, I guide teams through controlled AI adoption with measurable outcomes.
-keywords: AI adoption process, AI implementation steps, small business AI strategy, human-in-the-loop AI, AI pilot program, controlled AI adoption
+title: How I Work | AI Adoption Process
+description: Learn about my proven 4-step process for helping teams adopt AI safely. From discovery to pilot implementation, I guide teams through controlled AI adoption with measurable outcomes.
+keywords: AI adoption process, AI implementation steps, AI strategy, human-in-the-loop AI, AI pilot program, controlled AI adoption
 ---
 
 Most AI projects fail not because the technology is bad, but because it's introduced too quickly, in the wrong places, and without clear ownership.
@@ -11,7 +11,7 @@ My approach is designed to avoid that — by earning trust step by step.
 
 ## My Process
 
-I work with small, growing teams to introduce AI in ways that are safe, measurable, and reversible. Here's how we typically proceed:
+I work with teams that are exploring AI carefully to introduce AI in ways that are safe, measurable, and reversible. Here's how we typically proceed:
 
 ### Discovery Phase
 

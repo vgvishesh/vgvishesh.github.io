@@ -2,7 +2,7 @@
 layout: page
 custom_layout: true
 title: About Vishesh Gupta | AI Consultant & Software Engineer
-description: Learn about Vishesh Gupta, a software engineer with over 12 years of experience building production systems. Experience includes IIT Delhi, Ubisoft, Amazon Kindle, and YC startups. Now helping small businesses adopt AI safely.
+description: Learn about Vishesh Gupta, a software engineer with over 12 years of experience building production systems. Experience includes IIT Delhi, Ubisoft, Amazon Kindle, and YC startups. Now helping teams adopt AI safely and thoughtfully.
 keywords: Vishesh Gupta, software engineer, AI consultant, IIT Delhi, Ubisoft, Amazon, Y Combinator, software architect, production systems
 ---
 
@@ -73,7 +73,7 @@ keywords: Vishesh Gupta, software engineer, AI consultant, IIT Delhi, Ubisoft, A
         </div>
         <div class="experience-step">
           <h3>Leading without chaos</h3>
-          <p>I've led small engineering teams, set standards, and shipped consistently in environments where structure didn't already exist.</p>
+          <p>I've led engineering teams, set standards, and shipped consistently in environments where structure didn't already exist.</p>
         </div>
       </div>
     </div>
