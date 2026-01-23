@@ -13,6 +13,14 @@
   <!-- Structured Data (JSON-LD) -->
   {% include structured-data.html %}
   
+  <!-- Google Fonts - Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  
   <!-- Stylesheet -->
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   
@@ -41,5 +49,39 @@
   </main>
   
   {% include footer.html %}
+  
+  <!-- Subtle scroll reveal animations -->
+  <script>
+    // Only add reveal animations if user hasn't disabled animations
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      // Observe all sections on page load
+      document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => {
+          // Only observe if not already visible (above fold)
+          const rect = section.getBoundingClientRect();
+          if (rect.top > window.innerHeight) {
+            observer.observe(section);
+          } else {
+            section.classList.add('fade-in');
+          }
+        });
+      });
+    }
+  </script>
 </body>
 </html>
