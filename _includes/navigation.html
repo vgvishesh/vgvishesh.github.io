@@ -1,0 +1,32 @@
+<nav class="nav">
+  <div class="nav-container">
+    <a href="{{ '/' | relative_url }}" class="nav-logo">{{ site.title }}</a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' or page.url == '/index.html' %}class="active"{% endif %}>Home</a></li>
+      <li><a href="{{ '/how-i-work' | relative_url }}" {% if page.url == '/how-i-work/' or page.url == '/how-i-work.html' %}class="active"{% endif %}>How I Work</a></li>
+      <li><a href="{{ '/about' | relative_url }}" {% if page.url == '/about/' or page.url == '/about.html' %}class="active"{% endif %}>About</a></li>
+      <li><a href="{{ '/blogs' | relative_url }}" {% if page.url == '/blogs/' or page.url == '/blogs.html' %}class="active"{% endif %}>Writings</a></li>
+      <li><a href="{{ '/contact' | relative_url }}" {% if page.url == '/contact/' or page.url == '/contact.html' %}class="active"{% endif %}>Contact</a></li>
+    </ul>
+  </div>
+</nav>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (navToggle) {
+      navToggle.addEventListener('click', function() {
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !isExpanded);
+        navLinks.classList.toggle('nav-links-open');
+        navToggle.classList.toggle('nav-toggle-open');
+      });
+    }
+  });
+</script>

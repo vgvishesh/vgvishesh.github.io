@@ -147,12 +147,12 @@ const prompts = [
             onChange={handleTextAreaChange}
             onKeyDown={handleKeyDown}
             placeholder="Enter prompt text here"
-            style={{ width: '100%', height: '150px' }}
+            style={&#123;&#123; width: '100%', height: '150px' &#125;&#125;}
           />
           {showDropdown && (
-            <div style={{ position: 'absolute', top: dropdownPosition.top, left: dropdownPosition.left }}>
+            <div style={&#123;&#123; position: 'absolute', top: dropdownPosition.top, left: dropdownPosition.left &#125;&#125;}>
               {keyValuePairs.map((pair, index) => (
-                <div key={index} onClick={() => handleKeySelection(pair.key)} style={{ cursor: 'pointer' }}>
+                <div key={index} onClick={() => handleKeySelection(pair.key)} style={&#123;&#123; cursor: 'pointer' &#125;&#125;}>
                   {pair.key}
                 </div>
               ))}
@@ -358,17 +358,17 @@ const prompts = [
       };
 
       return (
-        <div style={{ position: 'relative' }}>
+        <div style={&#123;&#123; position: 'relative' &#125;&#125;}>
           <textarea
             ref={textareaRef}
             value={promptText}
             onChange={handleTextAreaChange}
             onKeyDown={handleKeyDown}
             placeholder="Enter prompt text here"
-            style={{ width: '100%', height: '150px', border: '1px solid black' }}
+            style={&#123;&#123; width: '100%', height: '150px', border: '1px solid black' &#125;&#125;}
           />
           {showDropdown && (
-            <div style={{
+            <div style={&#123;&#123;
               position: 'absolute',
               top: '100%',
               left: 0,
@@ -376,12 +376,12 @@ const prompts = [
               backgroundColor: 'black',
               color: 'white',
               border: '1px solid white'
-            }}>
+            &#125;&#125;}>
               {keyValuePairs.map((pair, index) => (
                 <div
                   key={index}
                   onClick={() => handleKeySelection(pair.value)}
-                  style={{ cursor: 'pointer', padding: '5px' }}
+                  style={&#123;&#123; cursor: 'pointer', padding: '5px' &#125;&#125;}
                 >
                   {pair.key}
                 </div>

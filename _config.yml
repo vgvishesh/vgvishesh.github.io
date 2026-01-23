@@ -1,10 +1,44 @@
-theme: minima
+# Jekyll Configuration
 title: vgvishesh
+description: Practical AI adoption for small, non-tech businesses
+url: https://vgvishesh.com
+baseurl: ""
+
+# Author Information
+author: Vishesh Gupta
+email: vgvishesh2018@gmail.com
 github_username: vgvishesh
 linkedin_username: guptavishesh
 twitter_username: vgvishesh2008
-email: vgvishesh2018@gmail.com
-author: Vishesh Gupta
+
+# Plugins and Extensions
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+# Permalink pattern for posts (default Jekyll pattern)
+permalink: /:year/:month/:day/:title/
+
+# SEO Settings
+timezone: UTC
+future: false
+show_excerpts: false
+
+# Analytics
 google_analytics: UA-229547270-1
+
+# Comments (optional)
 disqus:
   shortname: vgvishesh-com
+
+# Exclude files from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git
+  - .gitignore
