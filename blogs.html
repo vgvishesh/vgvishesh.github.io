@@ -1,0 +1,32 @@
+---
+layout: page
+title: Blog | AI Adoption, Software Engineering & Technical Articles
+description: Browse all blog posts on AI adoption, software engineering, API security, Python programming, and practical technical guides. Learn from real-world experience building production systems.
+keywords: AI blog, software engineering blog, technical articles, AI adoption guides, programming tutorials, API security
+---
+
+<header>
+  <h1>All Blog Posts</h1>
+  <p>Articles on AI adoption, software engineering, and practical technical guides.</p>
+</header>
+
+<article>
+  <ul class="blog-list" itemscope itemtype="https://schema.org/Blog">
+    {% for post in site.posts %}
+    <li class="blog-item" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blog-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%B %d, %Y" }}</time>
+      </div>
+      <h3>
+        <a href="{{ post.url | relative_url }}" itemprop="url">
+          <span itemprop="headline">{{ post.title }}</span>
+        </a>
+      </h3>
+      {% if post.description %}
+      <p class="blog-excerpt" itemprop="description">{{ post.description }}</p>
+      {% endif %}
+      <meta itemprop="author" content="{{ post.author | default: site.author }}">
+    </li>
+    {% endfor %}
+  </ul>
+</article>

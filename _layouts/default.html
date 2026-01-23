@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Title -->
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  
+  <!-- Comprehensive SEO Meta Tags -->
+  {% include seo.html %}
+  
+  <!-- Structured Data (JSON-LD) -->
+  {% include structured-data.html %}
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="{{ '/assets/images/vg.jpeg' | relative_url }}">
+  
+  <!-- RSS Feed -->
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }} RSS Feed" href="{{ '/feed.xml' | relative_url }}">
+  
+  <!-- Google Analytics -->
+  {% if site.google_analytics %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.google_analytics }}');
+  </script>
+  {% endif %}
+</head>
+<body>
+  {% include navigation.html %}
+  
+  <main role="main">
+    {{ content }}
+  </main>
+  
+  {% include footer.html %}
+</body>
+</html>
