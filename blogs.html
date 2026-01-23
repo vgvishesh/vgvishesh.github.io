@@ -1,21 +1,25 @@
 ---
 layout: page
-title: Blog | AI Adoption, Software Engineering & Technical Articles
-description: Browse all blog posts and insights on AI adoption, software engineering, API security, Python programming, and practical technical guides. Learn from real-world experience building production systems.
+title: Writings | AI Adoption, Software Engineering & Technical Articles
+description: Browse all writings and insights on AI adoption, software engineering, API security, Python programming, and practical technical guides. Learn from real-world experience building production systems.
 keywords: AI blog, software engineering blog, technical articles, AI adoption guides, programming tutorials, API security, writing, insights
 ---
 
 <header>
-  <h1>Blog & Writing</h1>
-  <p>Articles, insights, and longer-form content on AI adoption, software engineering practices, and building systems that work in the real world.</p>
+  <h1>Writings</h1>
+  <p>I write to clarify my own thinking and to help business leaders make better decisions about technology — without the noise.</p>
 </header>
 
 <article>
   <ul class="blog-list" itemscope itemtype="https://schema.org/Blog">
     {% for post in site.posts %}
+    {% assign words = post.content | number_of_words %}
+    {% assign reading_time = words | divided_by: 200.0 | ceil %}
     <li class="blog-item" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
       <div class="blog-meta">
         <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%B %d, %Y" }}</time>
+        <span> • </span>
+        <span>{{ reading_time }} min read</span>
       </div>
       <h3>
         <a href="{{ post.url | relative_url }}" itemprop="url">

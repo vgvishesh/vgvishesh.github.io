@@ -1,6 +1,9 @@
 ---
 layout: default
 ---
+{% if page.custom_layout %}
+{{ content }}
+{% else %}
 <article class="section section-light">
   <div class="container-narrow">
     <header>
@@ -9,8 +12,9 @@ layout: default
       <p class="page-description" style="color: var(--light-text-secondary); font-size: var(--font-size-lg); margin-top: var(--spacing-sm);">{{ page.description }}</p>
       {% endif %}
     </header>
-    <div class="page-content">
+    <div class="page-content long-form">
       {{ content }}
     </div>
   </div>
 </article>
+{% endif %}

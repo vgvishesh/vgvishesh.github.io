@@ -7,28 +7,117 @@ keywords: AI consultation, book AI call, AI consultant contact, free AI consulta
 
 ## Let's Talk
 
-The best way to start is with a 30-minute clarity call. No pitch, no demos—just a conversation about where your team spends time, what feels repetitive, and whether AI makes sense for your situation.
+This isn't a sales pitch.
 
-You'll leave with clarity, even if we don't work together.
+The first conversation is about understanding whether AI makes sense for your business at all — and where it doesn't.
 
-### Book a Call
+<form id="contact-form" class="contact-form" novalidate>
+  <div id="form-success" class="form-success" style="display: none;">
+    <div class="success-icon">✓</div>
+    <h3>Message sent successfully!</h3>
+    <p>Thank you for reaching out. I'll get back to you within 24–48 hours.</p>
+    <p class="success-redirect">Redirecting to home page...</p>
+  </div>
 
-[Schedule a 30-minute clarity call](#) *(Add your calendar booking link here)*
+  <div id="form-content">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required />
+    </div>
 
-### Email
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+    </div>
 
-{{ site.email }}
+    <div class="form-group">
+      <label for="company">Company <span style="color: var(--light-text-secondary); font-weight: normal;">(optional)</span></label>
+      <input type="text" id="company" name="company" />
+    </div>
 
-### Social
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+    </div>
 
-{% if site.linkedin_username %}
-- [LinkedIn](https://www.linkedin.com/in/{{ site.linkedin_username }})
-{% endif %}
+    <!-- Anti-spam -->
+    <input type="text" name="_gotcha" style="display:none">
 
-{% if site.twitter_username %}
-- [Twitter](https://twitter.com/{{ site.twitter_username }})
-{% endif %}
+    <button type="submit" class="btn btn-primary" id="submit-btn">
+      <span id="submit-text">Send message</span>
+      <span id="submit-loading" style="display: none;">Sending...</span>
+    </button>
+  </div>
+</form>
 
----
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contact-form');
+    const formContent = document.getElementById('form-content');
+    const formSuccess = document.getElementById('form-success');
+    const submitBtn = document.getElementById('submit-btn');
+    const submitText = document.getElementById('submit-text');
+    const submitLoading = document.getElementById('submit-loading');
 
-*I typically respond within 24–48 hours.*
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Disable submit button
+      submitBtn.disabled = true;
+      submitText.style.display = 'none';
+      submitLoading.style.display = 'inline';
+      
+      // Get form data
+      const formData = new FormData(form);
+      
+      try {
+        const response = await fetch('https://formspree.io/f/maqeewkk', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          // Show success message
+          formContent.style.display = 'none';
+          formSuccess.style.display = 'block';
+          
+          // Redirect to home page after 3 seconds
+          setTimeout(function() {
+            window.location.href = '/';
+          }, 3000);
+        } else {
+          // Handle error
+          const data = await response.json();
+          alert('Sorry, there was an error sending your message. Please try again or email me directly.');
+          submitBtn.disabled = false;
+          submitText.style.display = 'inline';
+          submitLoading.style.display = 'none';
+        }
+      } catch (error) {
+        // Handle network error
+        alert('Sorry, there was an error sending your message. Please try again or email me directly.');
+        submitBtn.disabled = false;
+        submitText.style.display = 'inline';
+        submitLoading.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+<p style="text-align: center; color: var(--light-text-secondary); margin-top: var(--spacing-md);">I typically respond within 24–48 hours.</p>
+
+<div style="text-align: center; margin-top: var(--spacing-lg); padding-top: var(--spacing-md); border-top: 1px solid var(--light-border);">
+  <p style="margin-bottom: var(--spacing-sm);">Prefer a conversation?</p>
+  <p style="margin-bottom: var(--spacing-md); color: var(--light-text-secondary);">If it's easier, you can book a 30-minute clarity call directly.</p>
+  <a
+    href="https://calendly.com/vgvishesh_/30min"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="btn btn-secondary"
+  >
+    Book a clarity call
+  </a>
+</div>

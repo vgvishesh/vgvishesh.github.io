@@ -80,6 +80,28 @@
             section.classList.add('fade-in');
           }
         });
+        
+        // Observe experience steps separately for staggered animation
+        const experienceSteps = document.querySelectorAll('.experience-step');
+        if (experienceSteps.length > 0) {
+          const stepObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+              if (entry.isIntersecting) {
+                setTimeout(() => {
+                  entry.target.style.opacity = '1';
+                  entry.target.style.transform = 'translateY(0)';
+                }, index * 150);
+                stepObserver.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+          
+          experienceSteps.forEach(step => {
+            step.style.opacity = '0';
+            step.style.transform = 'translateY(20px)';
+            stepObserver.observe(step);
+          });
+        }
       });
     }
   </script>
