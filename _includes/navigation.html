@@ -8,6 +8,14 @@
     </button>
     <ul class="nav-links">
       <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' or page.url == '/index.html' %}class="active"{% endif %}>Home</a></li>
+      <li class="nav-dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="nav-dropdown-trigger" aria-controls="product-menu" id="product-menu-btn">
+          Product
+        </button>
+        <ul class="nav-dropdown-menu" id="product-menu" role="menu" aria-label="Products">
+          <li role="none"><a href="{{ '/products/ip-drafting-copilot/' | relative_url }}" role="menuitem" {% if page.url == '/products/ip-drafting-copilot/' %}class="active"{% endif %}>Patent drafting Agent</a></li>
+        </ul>
+      </li>
       <li><a href="{{ '/how-i-work' | relative_url }}" {% if page.url == '/how-i-work/' or page.url == '/how-i-work.html' %}class="active"{% endif %}>How I Work</a></li>
       <li><a href="{{ '/about' | relative_url }}" {% if page.url == '/about/' or page.url == '/about.html' %}class="active"{% endif %}>About</a></li>
       <li><a href="{{ '/blogs' | relative_url }}" {% if page.url == '/blogs/' or page.url == '/blogs.html' %}class="active"{% endif %}>Writings</a></li>
@@ -19,13 +27,36 @@
   document.addEventListener('DOMContentLoaded', function() {
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
-    
+    const productBtn = document.getElementById('product-menu-btn');
+    const productMenu = document.getElementById('product-menu');
+    const dropdown = document.querySelector('.nav-dropdown');
+
     if (navToggle) {
       navToggle.addEventListener('click', function() {
         const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
         navToggle.setAttribute('aria-expanded', !isExpanded);
         navLinks.classList.toggle('nav-links-open');
         navToggle.classList.toggle('nav-toggle-open');
+        if (dropdown) {
+          dropdown.classList.remove('nav-dropdown-open');
+          dropdown.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    if (productBtn && productMenu) {
+      productBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = dropdown.getAttribute('aria-expanded') === 'true';
+        dropdown.setAttribute('aria-expanded', !isOpen);
+        dropdown.classList.toggle('nav-dropdown-open');
+      });
+      document.addEventListener('click', function() {
+        if (dropdown) {
+          dropdown.classList.remove('nav-dropdown-open');
+          dropdown.setAttribute('aria-expanded', 'false');
+        }
       });
     }
   });
