@@ -228,16 +228,6 @@ em {
   color: var(--light-text);
 }
 
-.nav-dropdown-arrow {
-  font-size: 0.65em;
-  opacity: 0.8;
-  transition: transform 0.2s ease;
-}
-
-.nav-dropdown-open .nav-dropdown-arrow {
-  transform: rotate(180deg);
-}
-
 .nav-dropdown-menu {
   position: absolute;
   top: 100%;
@@ -1343,10 +1333,12 @@ em {
 /* ========== IP Drafting Copilot product page ========== */
 .ip-copilot-page {
   font-family: var(--font-sans);
+  text-align: left;
 }
 
 .ip-copilot-section {
   padding: var(--spacing-section) 0;
+  text-align: left;
 }
 
 /* Subtle section separators */
@@ -1657,7 +1649,7 @@ em {
 
 /* Social proof strip */
 .ip-copilot-social-proof {
-  text-align: center;
+  text-align: left;
   max-width: var(--max-width-content);
   margin: 0 auto;
   color: var(--light-text-secondary);
@@ -1704,7 +1696,7 @@ em {
 }
 
 .ip-copilot-cta-block {
-  text-align: center;
+  text-align: left;
   max-width: var(--max-width-content);
   margin: 0 auto;
   padding: var(--spacing-lg);
