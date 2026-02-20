@@ -27,8 +27,8 @@ timezone: UTC
 future: false
 show_excerpts: false
 
-# Analytics
-google_analytics: UA-229547270-1
+# Analytics (GA4 measurement ID)
+google_analytics: G-1FFV7ME3EX
 
 # Comments (optional)
 disqus:
