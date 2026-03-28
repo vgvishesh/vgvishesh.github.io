@@ -228,6 +228,3 @@ So, yes this mechanism does solve the problem. If you want to see this in action
 Here, I have used a very simple cryptographic validation algorithm i.e. `SHA256()` to authenticate the request. You can use any encryption mechanism as long as you manage to keep the browser and the server in sync with the requestId sequences. 
 
 If you have any questions regarding this approach please feel to reach out to me on any of my handles. 
-
-
-
